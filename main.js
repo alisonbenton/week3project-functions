@@ -169,25 +169,15 @@ document.getElementById("addDigits").addEventListener("click", function() {
 //     Finally, it should return the total amount of change you have in the following format: "$32.77"
 //     HINT: Understanding the toFixed method will help you with the format.
 
-// function piggybank (quarters, dimes, nickels, pennies){
-  // document.getElementById("q12").innerHTML = "$"+quarters*0.25 + dimes*0.10 + nickels*0.05 + pennies+0.01;
-// };
+function piggybank (quarters, dimes, nickels, pennies){
+  document.getElementById("q12").innerHTML = "$"+(quarters.value*0.25 + dimes.value*0.10 + nickels.value*0.05 + pennies.value+0.01);
+};
 
-// document.getElementById("addvalues").addEventListener("click", function() {
-// piggybank("quarters1","dimes1", "nickels1","pennies1")
-// });
-
-
-
-
-
-
-
-
+document.getElementById("addvalues").addEventListener("click", function() {
+piggybank(quarters1,dimes1,nickels1,pennies1)
+});
 
 // ADVANCED TRACK
-
-
 
 // A. Develop a function that cleans up a phone number entered by a user.
 //     The rules are as follows:
@@ -197,25 +187,50 @@ document.getElementById("addDigits").addEventListener("click", function() {
 //        If the phone number is 11 digits and the first number is not 1, then it is a bad number.
 //        HINT: You may need to use the charAt method.
 
+function lookpurdy(NumIn){
+  if((NumIn.length < 10)||(NumIn.length > 11)){
+    document.getElementById("qA").innerHTML = "Please re-enter your 10- or 11-digit phone number";
+  } else if(NumIn.length === 10){
+    document.getElementById("qA").innerHTML = "("+NumIn.charAt(0)+NumIn.charAt(1)+NumIn.charAt(2)+") "+NumIn.charAt(3)+NumIn.charAt(4)+NumIn.charAt(5)+" - "+NumIn.charAt(6)+NumIn.charAt(7)+NumIn.charAt(8)+NumIn.charAt(9);
+  }
+}
 
+
+document.getElementById("freshen").addEventListener("click", function() {
+lookpurdy(userphone);
+});
 
 // B. Create a function that determines whether a parameter is a number or not.
 //     Iterate over the elements in the following array to determine if each is a number.
 //     HINT: You may need to use the isNaN method.
 
-      //  arrayOfAllTheThings = ["one", 23, {thingsWhalesLove: "beaches"}, "six hundred", 33, 6834, "5,435"]
-
-
+arrayOfAllTheThings = ["one", 23, {thingsWhalesLove: "beaches"}, "six hundred", 33, 6834, "5,435"]
+answerarray = [];
+for (i = 0; i < arrayOfAllTheThings.length; i++){
+  if((isNaN(arrayOfAllTheThings[i]))===true){
+    answerarray.push("Not a number.")
+  }
+  else{
+    answerarray.push("Is a number.")
+  }
+}
+document.getElementById("qB1").innerHTML = "Given array = " + arrayOfAllTheThings;
+document.getElementById("qB2").innerHTML = "New array = " + answerarray;
 
 // C. Create a die rolling function that accepts no parameters.
 //     It rolls two six-sided-dice, adds the two numbers together, and returns a roll value.
 //     Display the result in the HTML page.
 //     To get the random number rolled by each die, use Math.random and Math.floor.
 
+var die1 = Math.floor((Math.random*6)+1)
+var die2 = Math.floor((Math.random*6)+1)
+var sum = die1.value+die2.value
+document.getElementById("qC").innerHTML = sum.value;
 
 
 // D. Using your die roll function above, figure out how many times it would take a user
 //     to get around a Monopoly board once. A monopoly board has 40 spaces total.
+
 
 
 
